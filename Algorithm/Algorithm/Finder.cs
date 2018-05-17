@@ -41,8 +41,9 @@ namespace Algorithm
         {
             return (from x in _people
                    from y in _people
-                   where x.BirthDate <= y.BirthDate && !x.Equals(y)
-                   select new Pair(x, y)).Distinct(new PairEqualityComparer());
+                   where y.IsOlderThan(x) && !x.Equals(y)
+                   select new Pair(x, y))
+                .Distinct(new PairEqualityComparer());
         }
     }
 }
