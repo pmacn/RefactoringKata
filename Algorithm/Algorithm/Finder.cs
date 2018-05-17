@@ -30,7 +30,7 @@ namespace Algorithm
                         r.Person1 = _people[j];
                         r.Person2 = _people[i];
                     }
-                    r.BirthdateDistance = r.Person2.BirthDate - r.Person1.BirthDate;
+                    r.BirthDateDistance = r.Person2.BirthDate - r.Person1.BirthDate;
                     tr.Add(r);
                 }
             }
@@ -46,14 +46,14 @@ namespace Algorithm
                 switch(option)
                 {
                     case FinderOption.Closest:
-                        if(result.BirthdateDistance < answer.BirthdateDistance)
+                        if(result.BirthDateDistance < answer.BirthDateDistance)
                         {
                             answer = result;
                         }
                         break;
 
                     case FinderOption.Furthest:
-                        if(result.BirthdateDistance > answer.BirthdateDistance)
+                        if(result.BirthDateDistance > answer.BirthDateDistance)
                         {
                             answer = result;
                         }
