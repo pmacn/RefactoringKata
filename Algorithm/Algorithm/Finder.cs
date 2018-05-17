@@ -22,27 +22,19 @@ namespace Algorithm
             }
 
             Pair answer = pairs.First();
-            foreach (var result in pairs)
+            foreach (var result in pairs.Skip(1))
             {
-                switch (option)
-                {
-                    case FinderOption.Closest:
-                        if (result.BirthDateDistance < answer.BirthDateDistance)
-                        {
-                            answer = result;
-                        }
-                        break;
-
-                    case FinderOption.Furthest:
-                        if (result.BirthDateDistance > answer.BirthDateDistance)
-                        {
-                            answer = result;
-                        }
-                        break;
-                }
+                answer = PickBestAnswer(answer, result, option);
             }
 
             return answer;
+        }
+
+        private static Pair PickBestAnswer(Pair currentAnswer, Pair candidateAnswer, FinderOption option)
+        {
+            bool candidateIsBetterAnswer = (option == FinderOption.Closest && candidateAnswer.BirthDateDistance < currentAnswer.BirthDateDistance) ||
+                (option == FinderOption.Furthest && candidateAnswer.BirthDateDistance > currentAnswer.BirthDateDistance);
+            return candidateIsBetterAnswer ? candidateAnswer : currentAnswer;
         }
 
         private IEnumerable<Pair> GeneratePairs()
