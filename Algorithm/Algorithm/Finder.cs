@@ -11,49 +11,49 @@ namespace Algorithm
             _people = people;
         }
 
-        public F Find(FinderOption option)
+        public Pair Find(FinderOption option)
         {
-            var tr = new List<F>();
+            var tr = new List<Pair>();
 
             for(var i = 0; i < _people.Count - 1; i++)
             {
                 for(var j = i + 1; j < _people.Count; j++)
                 {
-                    var r = new F();
+                    var r = new Pair();
                     if(_people[i].BirthDate < _people[j].BirthDate)
                     {
-                        r.P1 = _people[i];
-                        r.P2 = _people[j];
+                        r.Person1 = _people[i];
+                        r.Person2 = _people[j];
                     }
                     else
                     {
-                        r.P1 = _people[j];
-                        r.P2 = _people[i];
+                        r.Person1 = _people[j];
+                        r.Person2 = _people[i];
                     }
-                    r.D = r.P2.BirthDate - r.P1.BirthDate;
+                    r.BirthdateDistance = r.Person2.BirthDate - r.Person1.BirthDate;
                     tr.Add(r);
                 }
             }
 
             if(tr.Count < 1)
             {
-                return new F();
+                return new Pair();
             }
 
-            F answer = tr[0];
+            Pair answer = tr[0];
             foreach(var result in tr)
             {
                 switch(option)
                 {
                     case FinderOption.Closest:
-                        if(result.D < answer.D)
+                        if(result.BirthdateDistance < answer.BirthdateDistance)
                         {
                             answer = result;
                         }
                         break;
 
                     case FinderOption.Furthest:
-                        if(result.D > answer.D)
+                        if(result.BirthdateDistance > answer.BirthdateDistance)
                         {
                             answer = result;
                         }
