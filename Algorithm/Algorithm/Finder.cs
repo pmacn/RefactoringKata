@@ -11,7 +11,7 @@ namespace Algorithm
             _p = p;
         }
 
-        public F Find(FT ft)
+        public F Find(FinderOption option)
         {
             var tr = new List<F>();
 
@@ -43,16 +43,16 @@ namespace Algorithm
             F answer = tr[0];
             foreach(var result in tr)
             {
-                switch(ft)
+                switch(option)
                 {
-                    case FT.One:
+                    case FinderOption.Closest:
                         if(result.D < answer.D)
                         {
                             answer = result;
                         }
                         break;
 
-                    case FT.Two:
+                    case FinderOption.Furthest:
                         if(result.D > answer.D)
                         {
                             answer = result;
