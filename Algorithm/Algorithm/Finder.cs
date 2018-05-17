@@ -32,8 +32,8 @@ namespace Algorithm
 
         private static Pair PickBestAnswer(Pair currentAnswer, Pair candidateAnswer, FinderOption option)
         {
-            bool candidateIsBetterAnswer = (option == FinderOption.Closest && candidateAnswer.BirthDateDistance < currentAnswer.BirthDateDistance) ||
-                (option == FinderOption.Furthest && candidateAnswer.BirthDateDistance > currentAnswer.BirthDateDistance);
+            bool candidateIsBetterAnswer = (option == FinderOption.Closest && candidateAnswer.AgeDifference < currentAnswer.AgeDifference) ||
+                (option == FinderOption.Furthest && candidateAnswer.AgeDifference > currentAnswer.AgeDifference);
             return candidateIsBetterAnswer ? candidateAnswer : currentAnswer;
         }
 
