@@ -16,25 +16,9 @@ namespace Algorithm
         {
             IEnumerable<Pair> pairs = GeneratePairs();
 
-            if (pairs.Count() < 1)
-            {
-                return new Pair();
-            }
-
-            Pair answer = pairs.First();
-            foreach (var result in pairs.Skip(1))
-            {
-                answer = PickBestAnswer(answer, result, option);
-            }
-
-            return answer;
-        }
-
-        private static Pair PickBestAnswer(Pair currentAnswer, Pair candidateAnswer, FinderOption option)
-        {
-            bool candidateIsBetterAnswer = (option == FinderOption.Closest && candidateAnswer.AgeDifference < currentAnswer.AgeDifference) ||
-                (option == FinderOption.Furthest && candidateAnswer.AgeDifference > currentAnswer.AgeDifference);
-            return candidateIsBetterAnswer ? candidateAnswer : currentAnswer;
+            return (option == FinderOption.Closest ?
+                pairs.OrderBy(p => p.AgeDifference).FirstOrDefault() :
+                pairs.OrderByDescending(p => p.AgeDifference).FirstOrDefault()) ?? new Pair();
         }
 
         private IEnumerable<Pair> GeneratePairs()
