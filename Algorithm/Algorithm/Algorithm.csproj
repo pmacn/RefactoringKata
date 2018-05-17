@@ -43,6 +43,7 @@
     <Compile Include="Finder.cs" />
     <Compile Include="FinderOption.cs" />
     <Compile Include="Pair.cs" />
+    <Compile Include="PairEqualityComparer.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
