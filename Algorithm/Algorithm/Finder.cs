@@ -17,8 +17,18 @@ namespace Algorithm
             IEnumerable<Pair> pairs = GeneratePairs();
 
             return (option == FinderOption.Closest ?
-                pairs.OrderBy(p => p.AgeDifference).FirstOrDefault() :
-                pairs.OrderByDescending(p => p.AgeDifference).FirstOrDefault()) ?? new Pair();
+                FindPairWithSmallestAgeDifference(pairs) :
+                FindPairWithLargestAgeDifference(pairs)) ?? Pair.Empty;
+        }
+
+        private static Pair FindPairWithSmallestAgeDifference(IEnumerable<Pair> pairs)
+        {
+            return pairs.OrderBy(p => p.AgeDifference).FirstOrDefault();
+        }
+
+        private static Pair FindPairWithLargestAgeDifference(IEnumerable<Pair> pairs)
+        {
+            return pairs.OrderByDescending(p => p.AgeDifference).FirstOrDefault();
         }
 
         private IEnumerable<Pair> GeneratePairs()
