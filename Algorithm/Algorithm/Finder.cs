@@ -27,7 +27,7 @@ namespace Algorithm
                    from y in _people
                    where y.IsOlderThan(x) && !x.Equals(y)
                    select new Pair(x, y))
-                .Distinct(new PairEqualityComparer());
+                .Distinct();
         }
     }
 }
