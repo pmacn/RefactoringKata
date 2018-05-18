@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Finder.cs" />
     <Compile Include="FinderOption.cs" />
+    <Compile Include="NullPerson.cs" />
     <Compile Include="Pair.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
