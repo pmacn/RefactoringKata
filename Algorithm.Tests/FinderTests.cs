@@ -92,9 +92,9 @@ namespace Algorithm.Test
             }
         }
 
-        public static Person sue = new Person() { Name = "Sue", BirthDate = new DateTime(1950, 1, 1) };
-        public static Person greg = new Person() { Name = "Greg", BirthDate = new DateTime(1952, 6, 1) };
-        public static Person sarah = new Person() { Name = "Sarah", BirthDate = new DateTime(1982, 1, 1) };
-        public static Person mike = new Person() { Name = "Mike", BirthDate = new DateTime(1979, 1, 1) };
+        public static Person sue = new Person("Sue", new DateTime(1950, 1, 1));
+        public static Person greg = new Person("Greg", new DateTime(1952, 6, 1));
+        public static Person sarah = new Person("Sarah", new DateTime(1982, 1, 1));
+        public static Person mike = new Person("Mike", new DateTime(1979, 1, 1));
     }
 }
