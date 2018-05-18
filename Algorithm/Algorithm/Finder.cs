@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Algorithm
 {
     public class Finder
     {
-        private readonly List<Person> _people;
+        private readonly IEnumerable<Person> _people;
 
-        public Finder(List<Person> people)
+        public Finder(IEnumerable<Person> people)
         {
             _people = people;
         }
