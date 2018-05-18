@@ -6,7 +6,7 @@ namespace Algorithm
     {
         public Person(string name, DateTime birthDate)
         {
-            Name = name;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
             BirthDate = birthDate;
         }
 
