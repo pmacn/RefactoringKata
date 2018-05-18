@@ -4,12 +4,6 @@ namespace Algorithm
 {
     public class Pair
     {
-        private Pair()
-        {
-            YoungerPerson = OlderPerson = null;
-            AgeDifference = TimeSpan.Zero;
-        }
-
         public Pair(Person youngerPerson, Person olderPerson)
         {
             YoungerPerson = youngerPerson ?? throw new ArgumentNullException(nameof(youngerPerson));
@@ -17,7 +11,7 @@ namespace Algorithm
             AgeDifference = OlderPerson.BirthDate - YoungerPerson.BirthDate;
         }
 
-        public static readonly Pair Empty = new Pair();
+        public static Pair Empty { get; } = new Pair(new NullPerson(), new NullPerson());
         public Person YoungerPerson { get;}
         public Person OlderPerson { get; }
         public TimeSpan AgeDifference { get; }
@@ -38,7 +32,7 @@ namespace Algorithm
         public override int GetHashCode()
         {
             // We need to return the same hash code for Pair(x,y) and Pair(y, x)
-            return (YoungerPerson is null ? 0 : YoungerPerson.GetHashCode()) + (OlderPerson is null ? 0 : OlderPerson.GetHashCode());
+            return YoungerPerson.GetHashCode() + OlderPerson.GetHashCode();
         }
     }
 }
