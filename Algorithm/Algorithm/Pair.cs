@@ -6,20 +6,20 @@ namespace Algorithm
     {
         private Pair()
         {
-            Person1 = Person2 = null;
+            YoungerPerson = OlderPerson = null;
             AgeDifference = TimeSpan.Zero;
         }
 
-        public Pair(Person person1, Person person2)
+        public Pair(Person youngerPerson, Person olderPerson)
         {
-            Person1 = person1 ?? throw new ArgumentNullException(nameof(person1));
-            Person2 = person2 ?? throw new ArgumentNullException(nameof(person2));
-            AgeDifference = Person2.BirthDate - Person1.BirthDate;
+            YoungerPerson = youngerPerson ?? throw new ArgumentNullException(nameof(youngerPerson));
+            OlderPerson = olderPerson ?? throw new ArgumentNullException(nameof(olderPerson));
+            AgeDifference = OlderPerson.BirthDate - YoungerPerson.BirthDate;
         }
 
         public static readonly Pair Empty = new Pair();
-        public Person Person1 { get;}
-        public Person Person2 { get; }
+        public Person YoungerPerson { get;}
+        public Person OlderPerson { get; }
         public TimeSpan AgeDifference { get; }
 
         public override bool Equals(object obj)
@@ -31,14 +31,14 @@ namespace Algorithm
         public bool Equals(Pair other)
         {
             return other != null &&
-                (Person1 == other.Person1 && Person2 == other.Person2) ||
-                (Person1 == other.Person2 && Person2 == other.Person1);
+                (YoungerPerson == other.YoungerPerson && OlderPerson == other.OlderPerson) ||
+                (YoungerPerson == other.OlderPerson && OlderPerson == other.YoungerPerson);
         }
 
         public override int GetHashCode()
         {
             // We need to return the same hash code for Pair(x,y) and Pair(y, x)
-            return (Person1 is null ? 0 : Person1.GetHashCode()) + (Person2 is null ? 0 : Person2.GetHashCode());
+            return (YoungerPerson is null ? 0 : YoungerPerson.GetHashCode()) + (OlderPerson is null ? 0 : OlderPerson.GetHashCode());
         }
     }
 }
