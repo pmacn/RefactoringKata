@@ -16,8 +16,7 @@ namespace Algorithm.Test
 
                 var result = finder.Find(FinderOption.Closest);
 
-                Assert.Null(result.YoungerPerson);
-                Assert.Null(result.OlderPerson);
+                Assert.Equal(Pair.Empty, result);
             }
         }
 
@@ -31,8 +30,7 @@ namespace Algorithm.Test
 
                 var result = finder.Find(FinderOption.Closest);
 
-                Assert.Null(result.YoungerPerson);
-                Assert.Null(result.OlderPerson);
+                Assert.Equal(Pair.Empty, result);
             }
         }
 
