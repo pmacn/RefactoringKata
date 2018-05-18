@@ -15,7 +15,7 @@ namespace Algorithm
 
         public bool IsOlderThan(Person other)
         {
-            return other == null || BirthDate > other.BirthDate;
+            return other is null || BirthDate > other.BirthDate;
         }
 
         public override bool Equals(object obj)
@@ -25,7 +25,7 @@ namespace Algorithm
 
         public bool Equals(Person other)
         {
-            return !ReferenceEquals(other, null) &&
+            return !(other is null) &&
                 Name == other.Name && BirthDate == other.BirthDate;
         }
 
